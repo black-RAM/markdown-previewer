@@ -1,24 +1,33 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import PropTypes from "prop-types"
 import DOMPurify from 'dompurify'
 import { marked } from 'marked'
 import './App.css'
 
-function Previewer() {
-  const [text, setText] = useState("")
-  marked.use({breaks: true})
+marked.use({breaks: true})
 
-  const updater = (e) => {
-    const result = marked(e.target.value)
+function Previewer({sample}) {
+  const [text, setText] = useState(sample)
+  const [parsed, setParsed] = useState("")
+  useEffect(() => updater(text))
+
+  const updater = (newText) => {
+    setText(newText)
+    const result = marked(newText)
     const sanitizedResult = DOMPurify.sanitize(result)
-    setText(sanitizedResult)
+    setParsed(sanitizedResult)
   }
 
   return (
     <div>
-      <textarea id="editor" cols="30" rows="10" onChange={updater}></textarea>
-      <article id="preview" dangerouslySetInnerHTML={{ __html: text }}></article>
+      <textarea id="editor" cols="30" rows="10" onChange={(e) => updater(e.target.value)}>{text}</textarea>
+      <article id="preview" dangerouslySetInnerHTML={{ __html: parsed }}></article>
     </div>
   )
+}
+
+Previewer.propTypes = {
+  sample: PropTypes.string
 }
 
 export default Previewer
