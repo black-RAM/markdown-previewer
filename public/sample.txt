@@ -3,16 +3,24 @@
 ## This is a sub-heading...
 ### And here's some other cool stuff:
 
-Heres some code, `<div></div>`, between 2 backticks.
+Here's some code, `<div></div>`, between 2 backticks.
 
 ```
 // this is multi-line code:
 
-function anotherExample(firstLine, lastLine) {
-  if (firstLine == '```' && lastLine == '```') {
-    return multiLineCode;
+function generatePassword(length) {
+  const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+{}[]|;:,.<>?";
+  let password = "";
+  for (let i = 0; i < length; i++) {
+    const randomIndex = Math.floor(Math.random() * charset.length);
+    password += charset[randomIndex];
   }
+  return password;
 }
+
+const password = generatePassword(12);
+console.log(password);
+
 ```
 
 You can also make text **bold**... whoa!

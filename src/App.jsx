@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import PropTypes from "prop-types"
 import DOMPurify from 'dompurify'
 import { marked } from 'marked'
+import hljs from 'highlight.js'
 import './App.css'
 
 marked.use({breaks: true})
@@ -16,13 +17,14 @@ function Previewer({sample}) {
     const result = marked(newText)
     const sanitizedResult = DOMPurify.sanitize(result)
     setParsed(sanitizedResult)
+    hljs.highlightAll()
   }
 
   return (
-    <div>
-      <textarea id="editor" cols="30" rows="10" onChange={(e) => updater(e.target.value)}>{text}</textarea>
+    <>
+      <textarea id="editor" cols="30" rows="10" onChange={(e) => updater(e.target.value)} value={text}></textarea>
       <article id="preview" dangerouslySetInnerHTML={{ __html: parsed }}></article>
-    </div>
+    </>
   )
 }
 

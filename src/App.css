@@ -1,0 +1,79 @@
+@import url("highlight.js/styles/github.css");
+
+@font-face {
+  font-family: "Open Sans";
+  src: url("/OpenSans-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Reddit Mono";
+  src: url("RedditMono-Regular.ttf");
+}
+
+body{
+  margin: 0;
+  height: 100vh;
+  align-items: center;
+  background-color: #836FFF;
+  font-family: "Open Sans", sans-serif;
+}
+
+body, #root {
+  display: grid;
+}
+
+#root {
+  grid-template-columns: 1fr 2fr;
+  gap: 1em;
+}
+
+#editor, #preview{
+  max-height: 90vh;
+  overflow-y: scroll;
+  padding: 1rem;
+}
+
+#editor {
+  background-color: #211951;
+  color: #15F5BA;
+}
+
+#editor, code, pre {
+  font-family: "Reddit Mono", Courier, monospace;
+}
+
+#preview {
+  background-color: #F0F3FF;
+  color: #211951;
+}
+
+h1, h2{
+  margin: 0;
+  padding: 0.75em 0;
+  border-bottom: solid 2px #211951;
+}
+
+h1{
+  font-size: 2rem;
+}
+
+table, th, td{
+  padding: 0.25em;
+  border: 1px solid;
+  border-collapse: collapse;
+}
+
+blockquote{
+  padding-left: 1em;
+  border-left: 4px solid #211951;
+}
+
+code{
+  width: min-content;
+  max-width: 95%;
+  background-color: white;
+}
+
+img{
+  max-width: 80%;
+}
