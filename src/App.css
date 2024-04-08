@@ -2,12 +2,12 @@
 
 @font-face {
   font-family: "Open Sans";
-  src: url("/OpenSans-Regular.ttf");
+  src: url("./assets/OpenSans-Regular.ttf");
 }
 
 @font-face {
   font-family: "Reddit Mono";
-  src: url("RedditMono-Regular.ttf");
+  src: url("./assets/RedditMono-Regular.ttf");
 }
 
 body{
